@@ -31,13 +31,20 @@ let date;
 
 function getBoolean(prompt) {
     while (true) {
-        let input = readLine(prompt).trim().toLowerCase();
-        if (['y', 'yes', 'yeah', 'true', '1'].includes(input)) {
-            return true;
-        } else if (['n', 'no', 'nah', 'false', '0'].includes(input)) {
-            return false;
-        } else {
-            console.log("Invalid input. Please enter yes or no.");
+        // Allows ESC to cancel
+        try {
+            let input = readLine(prompt).trim().toLowerCase();
+            if (['y', 'yes', 'yeah', 'true', '1'].includes(input)) {
+                return true;
+            } else if (['n', 'no', 'nah', 'false', '0'].includes(input)) {
+                return false;
+            } else if (['c', 'cancel', 'clear', 'stop', 'restart'].includes(input)) {
+                throw new Error();
+            } else {
+                console.log("Invalid input. Please enter yes or no.");
+            }
+        } catch (e) {
+            throw new Error("Cancelled");
         }
     }
 }
@@ -105,7 +112,7 @@ function createClock() {
 
         // Add hour numbers
         if (isHourMarker) {
-            const nRad = rad - hLength - 15; // Adjust this value to position the numbers
+            const nRad = rad - hLength - 15;
             const nX = getWidth() / 2 + Math.sin(ang) * nRad;
             const nY = getHeight() / 2 - Math.cos(ang) * nRad;
 
@@ -201,7 +208,6 @@ function updateClock() {
     if (dat) {
         const opt = {
             weekday: 'long',
-            // year: 'numeric', 
             month: 'short',
             day: 'numeric'
         };
