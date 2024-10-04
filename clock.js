@@ -1,5 +1,5 @@
 // Imports audio
-const tick = new Audio(Fetch());
+const tic = new Audio(Fetch());
 
 function init() {
     checkMode();
@@ -24,7 +24,6 @@ let handElements = {};
 let mode;
 let handColors;
 let color;
-let lastSec;
 let interval;
 let seconds;
 let date;
@@ -84,6 +83,13 @@ function Fetch() {
         MyVDRSUzQyVEQWp3JmlubGluZT0x
     `)
     return atob(aud);
+}
+
+function tick() {
+    if (fx) {
+        tic.currentTime = 0.16; // Reset the audio to the beginning
+        tic.play();
+    }
 }
 
 function createClock() {
@@ -218,16 +224,8 @@ function updateClock() {
     }
 
     // Plays tick
-    if (fx) {
-        const sec = Math.floor(seconds);
-        if (sec !== lastSec) {
-            tick.currentTime = 0.16; // Reset the audio to the beginning
-            tick.play();
-            lastSec = sec;
-        }
-    }
+    tick()
 }
-
 
 // Set up the clock and start it
 init();
