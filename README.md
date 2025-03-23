@@ -1,4 +1,4 @@
-**TockClock**\
+**Tock**\
 the lightweight analog clock
 
 `built with Javascript`\
